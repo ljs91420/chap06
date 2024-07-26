@@ -4,10 +4,28 @@
   <servlet>
   	<servlet-name>forwardServlet</servlet-name>
   	<servlet-class>chap06.servlet.ForwardServlet</servlet-class>
+  	<init-param>
+  		<param-name>jdbcUrl</param-name>
+  		<param-value>jdbc:oracle:thin:@localhost:1521:XE</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>user</param-name>
+  		<param-value>hr</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>pwd</param-name>
+  		<param-value>1234</param-value>
+  	</init-param>
   </servlet>
   
   <servlet-mapping>
   	<servlet-name>forwardServlet</servlet-name>
   	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  <!-- servlet-name을 default로 설정한 매핑은 원래대로 동작한다. -->
+  <servlet-mapping>
+  	<servlet-name>default</servlet-name>
+  	<url-pattern>/favicon.ico</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -10,6 +10,6 @@ public class HelloProcess implements WebProcess {
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("userName", "이재상");
 		
-		return "WEB-INF/views/hello.jsp";
+		return "/hello";
 	}
 }
