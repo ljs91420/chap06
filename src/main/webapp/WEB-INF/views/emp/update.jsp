@@ -4,6 +4,7 @@
 <% 
 	Employee emp = (Employee) request.getAttribute("emp");
 	List<String[]> jobs = (List<String[]>) request.getAttribute("jobs");
+	List<String[]> departments = (List<String[]>) request.getAttribute("departments");
 	String full_name = emp.getFirst_name() + " " + emp.getLast_name();
 %>
 <!DOCTYPE html>
@@ -26,7 +27,11 @@
 		</select> <br>
 		월급: <input type="number" name="salary" value="<%=emp.getSalary() %>" /> <br>
 		커미션: <input type="number" name="commission_pct" value="<%=emp.getCommission_pct() %>" /> <br>
-		부서번호: <input type="number" name="department_id" value="<%=emp.getDepartment_id() %>" /> <br>
+		부서번호: <select name="department_id">
+			<% for (String[] department : departments) { %>
+				<option value="<%=department[0] %>"><%=department[1] %>(<%=department[0] %>)</option>
+				<% } %>
+		</select> <br>
 	</form>
 </body>
 </html>
