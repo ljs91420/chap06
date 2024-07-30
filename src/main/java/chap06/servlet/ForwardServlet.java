@@ -15,6 +15,7 @@ import chap06.webprocess.EmpDeleteProcess;
 import chap06.webprocess.EmpDetailProcess;
 import chap06.webprocess.EmpListProcess;
 import chap06.webprocess.EmpUpdateFormProcess;
+import chap06.webprocess.EmpUpdateProcess;
 import chap06.webprocess.HelloProcess;
 
 public class ForwardServlet extends HttpServlet {
@@ -30,7 +31,9 @@ public class ForwardServlet extends HttpServlet {
 		URI_MAPPING.put("GET:/emp/list", new EmpListProcess());
 		URI_MAPPING.put("GET:/emp/detail", new EmpDetailProcess());
 		URI_MAPPING.put("GET:/emp/delete", new EmpDeleteProcess());
+		// 같은 uri여도 메서드마다 다른 처리 적용하기
 		URI_MAPPING.put("GET:/emp/update", new EmpUpdateFormProcess());
+		URI_MAPPING.put("POST:/emp/update", new EmpUpdateProcess());
 	}
 	
 	@Override

@@ -1,5 +1,10 @@
 package chap06.dto;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.http.HttpServletRequest;
+
 public class Employee {
 	int employee_id;
 	String first_name;
@@ -7,7 +12,31 @@ public class Employee {
 	String job_id;
 	Double salary;
 	Double commission_pct;
-	Integer department_id;
+	int department_id;
+	
+	public Employee(ResultSet rs) throws SQLException {
+		this(
+			rs.getInt("employee_id"),
+			rs.getString("first_name"),
+			rs.getString("last_name"),
+			rs.getString("job_id"),
+			rs.getDouble("salary"),
+			rs.getDouble("commission_pct"),
+			rs.getInt("department_id")
+		);
+	}
+	
+	public Employee(HttpServletRequest request) {
+		this(
+			Integer.parseInt(request.getParameter("employee_id")),
+			request.getParameter("first_name"),
+			request.getParameter("last_name"),
+			request.getParameter("job_id"),
+			Double.parseDouble("salary"),
+			Double.parseDouble("commission_pct"),
+			Integer.parseInt(request.getParameter("department_id"))
+		);
+	}
 	
 	public Employee(int employee_id, String first_name, String last_name, String job_id, Double salary,
 			Double commission_pct, Integer department_id) {
